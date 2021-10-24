@@ -42,6 +42,8 @@ const Register = () => {
     }
     //
     dispatch(userRegister(user))
+ 
+    e.target.reset()
   }
 
   const handleOnChange = (e) => {

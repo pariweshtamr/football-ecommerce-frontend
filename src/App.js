@@ -7,14 +7,13 @@ import Product from './pages/Product/Product'
 import ProductList from './pages/ProductList/ProductList'
 import Register from './pages/Register/Register'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import PageNotFound from './components/PageNotFound/PageNotFound'
+import EmailVerification from './pages/EmailVerification/EmailVerification'
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
         <Route exact path="/products/:category">
           <ProductList />
         </Route>
@@ -29,6 +28,15 @@ function App() {
         </Route>
         <Route exact path="/register">
           <Register />
+        </Route>
+        <Route exact path="/email-verification">
+          <EmailVerification />
+        </Route>
+        {/* <Route path="*">
+          <PageNotFound />
+        </Route> */}
+        <Route exact path="/">
+          <HomePage />
         </Route>
       </Switch>
     </Router>
