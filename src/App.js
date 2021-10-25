@@ -32,11 +32,11 @@ function App() {
         <Route exact path="/email-verification">
           <EmailVerification />
         </Route>
-        {/* <Route path="*">
-          <PageNotFound />
-        </Route> */}
         <Route exact path="/">
           <HomePage />
+        </Route>
+        <Route exact path="*">
+          <PageNotFound />
         </Route>
       </Switch>
     </Router>
