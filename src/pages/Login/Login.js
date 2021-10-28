@@ -2,6 +2,9 @@ import React from 'react'
 import {
   LoginButton,
   LoginContainer,
+  Links,
+  ExternalLink,
+  Back,
   LoginForm,
   LoginInput,
   LoginTitle,
@@ -18,8 +21,16 @@ const Login = () => {
           <LoginInput placeholder="Username" />
           <LoginInput placeholder="Password" />
           <LoginButton>LOGIN</LoginButton>
-          <Link>Forgot your passweord?</Link>
-          <Link to="/register">Create a new account</Link>
+          <Links>
+            <ExternalLink>
+              <Link>Forgot your passweord?</Link>
+              <Link to="/register">Create a new account</Link>
+            </ExternalLink>
+
+            <Back>
+              <Link to="/">Home</Link>
+            </Back>
+          </Links>
         </LoginForm>
       </LoginWrapper>
     </LoginContainer>

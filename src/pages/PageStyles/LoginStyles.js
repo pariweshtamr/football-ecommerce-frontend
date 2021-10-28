@@ -15,6 +15,21 @@ export const LoginContainer = styled.div`
   align-items: center;
   justify-content: center;
 `
+export const Links = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+export const ExternalLink = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+export const Back = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
+  text-transform: uppercase;
+`
 export const LoginWrapper = styled.div`
   padding: 20px;
   width: 40%;
