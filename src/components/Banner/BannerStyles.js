@@ -37,7 +37,7 @@ export const Title = styled.h1`
   font-weight: bold;
 `
 export const Description = styled.p`
-  margin: 50px 0;
+  margin: 20px 0;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 3px;

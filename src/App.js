@@ -9,6 +9,7 @@ import Register from './pages/Register/Register'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PageNotFound from './components/PageNotFound/PageNotFound'
 import EmailVerification from './pages/EmailVerification/EmailVerification'
+import Dashboard from './pages/Dashboard/dashboard'
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
         </Route>
         <Route exact path="/email-verification">
           <EmailVerification />
+        </Route>
+        <Route exact path="/dashboard">
+          <Dashboard />
         </Route>
         <Route exact path="/">
           <HomePage />

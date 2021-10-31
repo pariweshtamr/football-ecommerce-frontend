@@ -7,12 +7,12 @@ import {
   NavContainer,
   NavWrapper,
   Right,
-} from './NavbarStyles'
+} from '../Navbar/NavbarStyles'
 import { Badge } from '@material-ui/core'
 import { ShoppingCartOutlined } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 
-const Navbar = () => {
+const DashboardNavbar = () => {
   return (
     <NavContainer>
       <NavWrapper>
@@ -23,15 +23,9 @@ const Navbar = () => {
         </Left>
         <Center></Center>
         <Right>
-          {/* IF USER IS NOT LOGGED IN */}
-          <Link to="/register">
-            <MenuItem>REGISTER</MenuItem>
-          </Link>
-          <Link to="/login">
-            <MenuItem>SIGN IN</MenuItem>
-          </Link>
-          {/* IF USER IS LOGGED IN */}
-          {/* Hello User */}
+          <MenuItem>REGISTER</MenuItem>
+          <MenuItem>SIGN IN</MenuItem>
+
           <MenuItem>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlined />
@@ -43,4 +37,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default DashboardNavbar

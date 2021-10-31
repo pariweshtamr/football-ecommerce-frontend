@@ -12,7 +12,7 @@ import {
 import { Link } from 'react-router-dom'
 import { Alert, Spinner } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { userRegister } from './userAction'
+import { userRegister } from '../User-auth-slice/userAction'
 
 const initialState = {
   firstName: '',
@@ -42,7 +42,7 @@ const Register = () => {
     }
     //
     dispatch(userRegister(user))
- 
+
     e.target.reset()
   }
 

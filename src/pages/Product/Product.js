@@ -16,8 +16,14 @@ import {
   ProductTitle,
   ProductWrapper,
 } from '../PageStyles/ProductStyles'
+import { popularProducts } from '../../data'
 
-const Product = () => {
+const Product = (props) => {
+  console.log(props)
+  const product = popularProducts.find((x) => x.id === props.match.params.id)
+  if (!product) {
+    return <div>Product Not Found!</div>
+  }
   return (
     <ProductContainer>
       <Navbar />

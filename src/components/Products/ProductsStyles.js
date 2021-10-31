@@ -23,11 +23,13 @@ export const ProductInfo = styled.div`
 `
 export const ProductItemContainer = styled.div`
   flex: 1;
-  margin: 5px;
+  margin: 10px 0;
   min-width: 280px;
   height: 350px;
+  padding: 20px 0;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #f5fbfd;
@@ -43,6 +45,7 @@ export const ProductItemContainer = styled.div`
 export const ProductImage = styled.img`
   height: 100%;
   z-index: 2;
+  margin-bottom: 20px;
 
   ${mobile({ width: '100%' })}
 `
@@ -63,3 +66,4 @@ export const ProductIcon = styled.div`
     cursor: pointer;
   }
 `
+export const ProductPrice = styled.div``

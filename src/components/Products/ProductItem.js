@@ -4,19 +4,28 @@ import {
   ProductIcon,
   ProductImage,
   ProductInfo,
+  ProductPrice,
   ProductItemContainer,
 } from './ProductsStyles'
+import Rating from '../Rating/Rating'
+import { Link } from 'react-router-dom'
 
-const ProductItem = ({ item }) => {
+const ProductItem = (props) => {
+  const { product } = props
   return (
-    <div>
+    <div key={product.id}>
       <ProductItemContainer>
-        <ProductImage src={item.img} />
-        <ProductInfo>
+        <ProductImage src={product.img} alt={product.title} />
+        {/* <ProductInfo>
           <ProductIcon>
             <ShoppingCartOutlined />
           </ProductIcon>
-        </ProductInfo>
+        </ProductInfo> */}
+        <Link to={`/product/${product.id}`}>
+          <p>{product.title}</p>
+        </Link>
+        <Rating rating={product.rating} numReviews={product.numReviews} />
+        <ProductPrice>$ {product.price}</ProductPrice>
       </ProductItemContainer>
     </div>
   )

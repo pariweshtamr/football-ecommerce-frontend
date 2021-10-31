@@ -20,7 +20,7 @@ const Banner = () => {
             <Image src={BannerImg} />
           </ImgContainer>
           <InfoContainer>
-            <Title>POPULAR SALE!</Title>
+            <Title>GEAR UP!</Title>
             <Description>
               HIGH-TECH SOCCER FOOTWEAR WITH MANY GREAT DESIGNS AND COLOURS TO
               CHOOSE FROM.
