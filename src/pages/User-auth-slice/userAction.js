@@ -31,12 +31,19 @@ export const userEmailVerification = (userObj) => async (dispatch) => {
   // dispatch response
 }
 
+const setJWTinBrowserMemory = ({ accessJWT, refreshJWT }) => {
+  window.sessionStorage.setItem('accessJWT', accessJWT)
+  window.localStorage.setItem('refreshJWT', refreshJWT)
+}
+
 export const userLogin = (loginInfo) => async (dispatch) => {
   dispatch(requestPending())
 
   // CALL API TO LOGIN
   const result = await loginUser(loginInfo)
+  console.log(result)
   if (result?.status === 'success') {
+    setJWTinBrowserMemory(result.jwts)
     return dispatch(loginSuccess(result.user))
   }
 

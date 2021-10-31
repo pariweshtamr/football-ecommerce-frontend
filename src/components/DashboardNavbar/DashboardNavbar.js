@@ -17,14 +17,14 @@ const DashboardNavbar = () => {
     <NavContainer>
       <NavWrapper>
         <Left>
-          <Link to="/">
+          <Link to="/dashboard">
             <Logo>Soccer store.</Logo>
           </Link>
         </Left>
         <Center></Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          <MenuItem>HELLO</MenuItem>
+          <MenuItem>LOGOUT</MenuItem>
 
           <MenuItem>
             <Badge badgeContent={4} color="primary">

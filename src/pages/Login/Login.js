@@ -28,7 +28,7 @@ const Login = () => {
     (state) => state.user,
   )
 
-  const [loginInfo, setLoginInfo] = useState()
+  const [loginInfo, setLoginInfo] = useState(initialState)
 
   useEffect(() => {
     isLoggedIn && history.push('/dashboard')
@@ -73,7 +73,7 @@ const Login = () => {
             name="username"
             placeholder="Username"
             required
-            // value={loginInfo.username}
+            value={loginInfo.username}
             onChange={handleOnChange}
           />
           <LoginInput
@@ -81,7 +81,7 @@ const Login = () => {
             type="password"
             placeholder="Password"
             required
-            // value={loginInfo.password}
+            value={loginInfo.password}
             onChange={handleOnChange}
           />
           <LoginButton type="submit">LOGIN</LoginButton>

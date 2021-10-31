@@ -10,19 +10,23 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PageNotFound from './components/PageNotFound/PageNotFound'
 import EmailVerification from './pages/EmailVerification/EmailVerification'
 import Dashboard from './pages/Dashboard/dashboard'
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 
 function App() {
   return (
     <Router>
       <Switch>
+        <PrivateRoute path="/dashboard">
+          <Dashboard />
+        </PrivateRoute>
+        <PrivateRoute path="/cart">
+          <Cart />
+        </PrivateRoute>
         <Route exact path="/products/:category">
           <ProductList />
         </Route>
         <Route exact path="/product/:id">
           <Product />
-        </Route>
-        <Route exact path="/cart">
-          <Cart />
         </Route>
         <Route exact path="/login">
           <Login />
@@ -32,9 +36,6 @@ function App() {
         </Route>
         <Route exact path="/email-verification">
           <EmailVerification />
-        </Route>
-        <Route exact path="/dashboard">
-          <Dashboard />
         </Route>
         <Route exact path="/">
           <HomePage />
