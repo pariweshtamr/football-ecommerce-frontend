@@ -4,6 +4,8 @@ import {
   requestFail,
   loginSuccess,
   loginFail,
+  loginAuto,
+  logoutSuccess,
 } from './userSlice'
 import { createUser, verifyNewUser, loginUser } from '../../api/userAPI'
 
@@ -48,4 +50,15 @@ export const userLogin = (loginInfo) => async (dispatch) => {
   }
 
   dispatch(loginFail(result))
+}
+
+export const autoLogin = () => async (dispatch) => {
+  dispatch(loginAuto())
+}
+
+export const userLogout = () => (dispatch) => {
+  window.sessionStorage.removeItem('accessJWT')
+  window.localStorage.removeItem('refreshJWT')
+
+  dispatch(logoutSuccess())
 }

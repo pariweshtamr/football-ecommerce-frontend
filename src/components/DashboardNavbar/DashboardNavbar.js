@@ -11,8 +11,16 @@ import {
 import { Badge } from '@material-ui/core'
 import { ShoppingCartOutlined } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { userLogout } from '../../pages/User-auth-slice/userAction'
 
 const DashboardNavbar = () => {
+  const dispatch = useDispatch()
+
+  const handleOnLogout = () => {
+    dispatch(userLogout())
+  }
+
   return (
     <NavContainer>
       <NavWrapper>
@@ -24,7 +32,7 @@ const DashboardNavbar = () => {
         <Center></Center>
         <Right>
           <MenuItem>HELLO</MenuItem>
-          <MenuItem>LOGOUT</MenuItem>
+          <MenuItem onClick={handleOnLogout}>LOGOUT</MenuItem>
 
           <MenuItem>
             <Badge badgeContent={4} color="primary">

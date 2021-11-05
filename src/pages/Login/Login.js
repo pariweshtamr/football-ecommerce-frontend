@@ -12,7 +12,7 @@ import {
 } from '../PageStyles/LoginStyles'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { userLogin } from '../User-auth-slice/userAction'
+import { userLogin, autoLogin } from '../User-auth-slice/userAction'
 import { Alert, Spinner } from 'react-bootstrap'
 
 const initialState = {
@@ -30,9 +30,15 @@ const Login = () => {
 
   const [loginInfo, setLoginInfo] = useState(initialState)
 
+  const accessJWT = window.sessionStorage.getItem('accessJWT')
+
   useEffect(() => {
+    if (!isLoggedIn && accessJWT) {
+      dispatch(autoLogin())
+    }
+
     isLoggedIn && history.push('/dashboard')
-  }, [isLoggedIn])
+  }, [isLoggedIn, history, accessJWT, dispatch])
 
   const handleOnChange = (e) => {
     const { name, value } = e.target
