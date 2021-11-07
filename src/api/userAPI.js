@@ -23,6 +23,7 @@ export const createUser = async (newUser) => {
 export const verifyNewUser = async (info) => {
   try {
     const { data } = await axios.patch(userApi + '/email-verification', info)
+    console.log(data)
     return data
   } catch (error) {
     console.log(error)

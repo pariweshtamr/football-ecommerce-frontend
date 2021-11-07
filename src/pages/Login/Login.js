@@ -10,7 +10,7 @@ import {
   LoginTitle,
   LoginWrapper,
 } from '../PageStyles/LoginStyles'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { userLogin, autoLogin } from '../User-auth-slice/userAction'
 import { Alert, Spinner } from 'react-bootstrap'
@@ -23,6 +23,7 @@ const initialState = {
 const Login = () => {
   const dispatch = useDispatch()
   const history = useHistory()
+  const location = useLocation()
 
   const { isLoggedIn, isPending, userLoginResponse } = useSelector(
     (state) => state.user,
@@ -30,15 +31,13 @@ const Login = () => {
 
   const [loginInfo, setLoginInfo] = useState(initialState)
 
-  const accessJWT = window.sessionStorage.getItem('accessJWT')
+  const from = location?.state?.from?.pathname || '/dashboard'
 
   useEffect(() => {
-    if (!isLoggedIn && accessJWT) {
-      dispatch(autoLogin())
-    }
+    !isLoggedIn && dispatch(autoLogin())
 
-    isLoggedIn && history.push('/dashboard')
-  }, [isLoggedIn, history, accessJWT, dispatch])
+    isLoggedIn && history.push(from)
+  }, [isLoggedIn, history, dispatch, from])
 
   const handleOnChange = (e) => {
     const { name, value } = e.target

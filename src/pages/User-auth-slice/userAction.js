@@ -8,6 +8,7 @@ import {
   logoutSuccess,
 } from './userSlice'
 import { createUser, verifyNewUser, loginUser } from '../../api/userAPI'
+import { getNewAccessJWT } from '../../api/tokenAPI'
 
 export const userRegister = (newUser) => async (dispatch) => {
   console.log(newUser)
@@ -43,7 +44,6 @@ export const userLogin = (loginInfo) => async (dispatch) => {
 
   // CALL API TO LOGIN
   const result = await loginUser(loginInfo)
-  console.log(result)
   if (result?.status === 'success') {
     setJWTinBrowserMemory(result.jwts)
     return dispatch(loginSuccess(result.user))
@@ -53,7 +53,25 @@ export const userLogin = (loginInfo) => async (dispatch) => {
 }
 
 export const autoLogin = () => async (dispatch) => {
-  dispatch(loginAuto())
+  const accessJWT = window.sessionStorage.getItem('accessJWT')
+  const refreshJWT = window.localStorage.getItem('refreshJWT')
+
+  //1. accessJWT EXISTS
+  if (accessJWT) {
+    return dispatch(loginAuto())
+  }
+
+  //2. accessJWT does not exist but refreshJWT exists
+  if (!accessJWT && refreshJWT) {
+    // CALL API to get refreshJWT
+    const result = await getNewAccessJWT()
+    if (result?.accessJWT) {
+      window.sessionStorage.setItem('accessJWT', result.accessJWT)
+      return dispatch(loginAuto())
+    }
+
+    dispatch(userLogout())
+  }
 }
 
 export const userLogout = () => (dispatch) => {
