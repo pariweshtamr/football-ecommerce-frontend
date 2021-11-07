@@ -11,8 +11,17 @@ import {
 import { Badge } from '@material-ui/core'
 import { ShoppingCartOutlined } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { userLogout } from '../../pages/User-auth-slice/userAction'
 
 const Navbar = () => {
+  const dispatch = useDispatch()
+  const { isLoggedIn } = useSelector((state) => state.user)
+
+  const handleOnLogout = () => {
+    dispatch(userLogout())
+  }
+
   return (
     <NavContainer>
       <NavWrapper>
@@ -24,12 +33,22 @@ const Navbar = () => {
         <Center></Center>
         <Right>
           {/* IF USER IS NOT LOGGED IN */}
-          <Link to="/register">
-            <MenuItem>REGISTER</MenuItem>
-          </Link>
-          <Link to="/login">
-            <MenuItem>SIGN IN</MenuItem>
-          </Link>
+          {!isLoggedIn ? (
+            <>
+              <Link to="/register">
+                <MenuItem>REGISTER</MenuItem>
+              </Link>
+              <Link to="/login">
+                <MenuItem>SIGN IN</MenuItem>
+              </Link>
+            </>
+          ) : (
+            <>
+              <MenuItem>HELLO</MenuItem>
+              <MenuItem onClick={handleOnLogout}>LOGOUT</MenuItem>
+            </>
+          )}
+
           {/* IF USER IS LOGGED IN */}
           {/* Hello User */}
           <MenuItem>

@@ -37,7 +37,7 @@ const ProductList = () => {
         <ProductListTitle>Boots</ProductListTitle>
         <FilterContainer>
           <Filter>
-            <FilterText>Filter Products:</FilterText>
+            <FilterText>Select a brand:</FilterText>
 
             <ProductListSelect name="brand" onChange={handleFilters}>
               <Option>Nike</Option>
