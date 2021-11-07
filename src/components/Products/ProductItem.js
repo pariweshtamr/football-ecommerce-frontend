@@ -1,9 +1,6 @@
-import { ShoppingCartOutlined } from '@material-ui/icons'
 import React from 'react'
 import {
-  ProductIcon,
   ProductImage,
-  ProductInfo,
   ProductPrice,
   ProductItemContainer,
 } from './ProductsStyles'
@@ -13,15 +10,11 @@ import { Link } from 'react-router-dom'
 const ProductItem = (props) => {
   const { product } = props
   return (
-    <div key={product.id}>
+    <div key={product._id}>
       <ProductItemContainer>
         <ProductImage src={product.img} alt={product.title} />
-        {/* <ProductInfo>
-          <ProductIcon>
-            <ShoppingCartOutlined />
-          </ProductIcon>
-        </ProductInfo> */}
-        <Link to={`/product/${product.id}`}>
+
+        <Link to={`/product/${product._id}`}>
           <p>{product.title}</p>
         </Link>
         <Rating rating={product.rating} numReviews={product.numReviews} />

@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import Footer from '../../components/Footer/Footer'
 import Navbar from '../../components/Navbar/Navbar'
 import Products from '../../components/Products/Products'
@@ -11,24 +10,9 @@ import {
   ProductListTitle,
   ProductListSelect,
 } from '../PageStyles/ProductListStyles'
-import { useLocation } from 'react-router-dom'
+import { products } from '../../data'
 
 const ProductList = () => {
-  const location = useLocation()
-  const cat = location.pathname.split('/')[2]
-
-  const [filter, setFilter] = useState({})
-
-  const handleFilters = (e) => {
-    const value = e.target.value
-
-    setFilter({
-      ...filter,
-      [e.target.name]: value,
-    })
-  }
-  console.log(filter)
-
   return (
     <div>
       <ProductListContainer>
@@ -39,14 +23,18 @@ const ProductList = () => {
           <Filter>
             <FilterText>Select a brand:</FilterText>
 
-            <ProductListSelect name="brand" onChange={handleFilters}>
+            <ProductListSelect name="brand">
+              <Option>All</Option>
               <Option>Nike</Option>
               <Option>Adidas</Option>
               <Option>Puma</Option>
             </ProductListSelect>
           </Filter>
         </FilterContainer>
-        <Products cat={cat} filter={filter} />
+        {products.map((product) => (
+          <Products key={product?._id} product={product} />
+        ))}
+
         <Footer />
       </ProductListContainer>
     </div>

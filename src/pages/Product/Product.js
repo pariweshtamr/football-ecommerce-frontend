@@ -16,24 +16,27 @@ import {
   ProductTitle,
   ProductWrapper,
 } from '../PageStyles/ProductStyles'
-import { popularProducts } from '../../data'
+import { products } from '../../data'
+import { Link } from 'react-router-dom'
 
 const Product = (props) => {
+  const product = products.find((x) => x._id === props.match.params.id)
+
+  if (!product) {
+    return <div>Product Not Found!</div>
+  }
   return (
     <ProductContainer>
       <Navbar />
+      <Link to="/products/:All">Back to product list</Link>
       <ProductWrapper>
         <ImgContainer>
-          <Image src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/b84fbd08-fed7-417f-a0ec-8a5aca6909e5/custom-nike-mercurial-superfly-8-elite-by-you.png" />
+          <Image src={product.img} alt={product.title} />
         </ImgContainer>
         <InfoContainer>
-          <ProductTitle>Nike Mercurial Superfly 8 Elite</ProductTitle>
-          <ProductDescription>
-            The Nike Mercurial Superfly 8 Elite has been designed to enhance
-            your game by bringing together the eessential components of speed,
-            optimal touch and dependable traction.
-          </ProductDescription>
-          <ProductPrice>$320</ProductPrice>
+          <ProductTitle>{product.title}</ProductTitle>
+          <ProductDescription>{product.description}</ProductDescription>
+          <ProductPrice>$ {product.price}</ProductPrice>
 
           <AddContainer>
             <QtyContainer>
