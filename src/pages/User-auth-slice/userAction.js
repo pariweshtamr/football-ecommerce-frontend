@@ -6,6 +6,7 @@ import {
   loginFail,
   loginAuto,
   logoutSuccess,
+  autoLoginPending,
 } from './userSlice'
 import { createUser, verifyNewUser, loginUser } from '../../api/userAPI'
 import { getNewAccessJWT } from '../../api/tokenAPI'
@@ -53,6 +54,7 @@ export const userLogin = (loginInfo) => async (dispatch) => {
 }
 
 export const autoLogin = () => async (dispatch) => {
+  dispatch(autoLoginPending(true))
   const accessJWT = window.sessionStorage.getItem('accessJWT')
   const refreshJWT = window.localStorage.getItem('refreshJWT')
 

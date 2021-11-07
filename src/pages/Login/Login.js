@@ -50,11 +50,7 @@ const Login = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault()
-    const { username, password } = loginInfo
 
-    if (!username && !password) {
-      return alert('You must provide both username and password')
-    }
     dispatch(userLogin(loginInfo))
   }
 
