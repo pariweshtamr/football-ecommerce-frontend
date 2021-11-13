@@ -1,13 +1,5 @@
 export const categories = [
   {
-    _id: 0,
-    img:
-      'https://s3.amazonaws.com/nikeinc/assets/35878/HO14_NFB_NCAA_Vapor_Outsole_Prfl_square_600.jpg?1418085173',
-    title: 'All',
-    cat: 'All',
-  },
-
-  {
     _id: 1,
     img:
       'https://s3.amazonaws.com/nikeinc/assets/35878/HO14_NFB_NCAA_Vapor_Outsole_Prfl_square_600.jpg?1418085173',

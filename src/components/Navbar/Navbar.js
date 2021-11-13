@@ -30,7 +30,17 @@ const Navbar = () => {
             <Logo>Soccer store.</Logo>
           </Link>
         </Left>
-        <Center></Center>
+        <Center>
+          {!isLoggedIn ? (
+            <></>
+          ) : (
+            <>
+              <Link to="/profile">
+                <MenuItem>MY PROFILE</MenuItem>
+              </Link>
+            </>
+          )}
+        </Center>
         <Right>
           {/* IF USER IS NOT LOGGED IN */}
           {!isLoggedIn ? (
@@ -44,13 +54,12 @@ const Navbar = () => {
             </>
           ) : (
             <>
+              {/* If user logged in */}
               <MenuItem>HELLO</MenuItem>
               <MenuItem onClick={handleOnLogout}>LOGOUT</MenuItem>
             </>
           )}
 
-          {/* IF USER IS LOGGED IN */}
-          {/* Hello User */}
           <MenuItem>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlined />

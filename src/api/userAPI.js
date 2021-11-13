@@ -37,12 +37,24 @@ export const verifyNewUser = async (info) => {
 export const loginUser = async (info) => {
   try {
     const { data } = await axios.post(userApi + '/login', info)
+    console.log(data)
     return data
   } catch (error) {
-    console.log(error)
     return {
       status: 'error',
       message: 'Invalid login details',
+    }
+  }
+}
+
+export const logoutUser = async (tokens) => {
+  try {
+    const { data } = await axios.post(userApi + '/logout', tokens)
+    return data
+  } catch (error) {
+    return {
+      status: 'error',
+      message: 'Error, unable to process your request. Please try again later.',
     }
   }
 }
