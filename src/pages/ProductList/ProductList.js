@@ -36,8 +36,8 @@ const ProductList = () => {
             <FilterText>Select a brand:</FilterText>
 
             <ProductListSelect name="brand">
-              <Option>All</Option>
-              <Option selected={true}>Nike</Option>
+              <Option selected={true}>All</Option>
+              <Option>Nike</Option>
               <Option>Adidas</Option>
               <Option>Puma</Option>
             </ProductListSelect>

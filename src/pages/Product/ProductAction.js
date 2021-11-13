@@ -9,7 +9,6 @@ import { getAProductById, getProducts } from '../../api/productAPI'
 export const fetchProducts = () => async (dispatch) => {
   dispatch(respondPending())
   const data = await getProducts()
-  console.log(data, 'from prod action')
   try {
     dispatch(getProductsSuccess(data))
   } catch (error) {

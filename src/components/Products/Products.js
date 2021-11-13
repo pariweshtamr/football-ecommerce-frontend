@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { ProductsContainer } from './ProductsStyles'
 import ProductItem from './ProductItem'
 import { Spinner, Alert } from 'react-bootstrap'
@@ -14,7 +14,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(fetchProducts())
-  }, [])
+  }, [dispatch])
   return (
     <div>
       <ProductsContainer>
