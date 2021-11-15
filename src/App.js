@@ -11,6 +11,7 @@ import PageNotFound from './components/PageNotFound/PageNotFound'
 import EmailVerification from './pages/EmailVerification/EmailVerification'
 import Dashboard from './pages/Dashboard/dashboard'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+import UserProfile from './pages/UserProfile/UserProfile'
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
       <Switch>
         <PrivateRoute path="/dashboard">
           <Dashboard />
+        </PrivateRoute>
+        <PrivateRoute path="/profile">
+          <UserProfile />
         </PrivateRoute>
         <PrivateRoute path="/cart">
           <Cart />
@@ -37,6 +41,12 @@ function App() {
         <Route exact path="/email-verification">
           <EmailVerification />
         </Route>
+        {/* <Route path="/purchase-history" exact>
+          <PurchaseHistory />
+        </Route>
+        <Route path="/edit-profile" exact>
+          <EditProfile />
+        </Route> */}
         <Route exact path="/">
           <HomePage />
         </Route>
